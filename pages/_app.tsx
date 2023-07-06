@@ -1,16 +1,28 @@
 import EmptyLayout from '@/component/layout/empty';
-import AdminLayout from '@/component/layout/admin';
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
 import { AppPropsWithLayout } from '../models/common';
+import { SWRConfig } from 'swr';
+import axiosClient from '@/api/axios-client';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { CacheProvider, EmotionCache } from '@emotion/react';
+import { createEmotionCache, theme } from '@/utils';
 
-function MyApp({ Component, pageProps }: AppPropsWithLayout) {
-  console.log("running...");
+const clientSideEmotionCache = createEmotionCache();
+
+function MyApp({ Component, pageProps, emotionCache = clientSideEmotionCache }: AppPropsWithLayout) {
   const Layout = Component.Layout ?? EmptyLayout
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <CacheProvider value={emotionCache}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <SWRConfig value={{ fetcher: url => axiosClient.get(url), shouldRetryOnError: false }}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </SWRConfig>
+      </ThemeProvider>
+    </CacheProvider >
+
   )
 }
 

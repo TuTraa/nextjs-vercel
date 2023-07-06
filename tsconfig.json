@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "jsx": "preserve",
     "lib": [
       "dom",
       "dom.iterable",
@@ -16,30 +17,22 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    // "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/component/*": [
-        "./component/*"
+      "@/*": [
+        "./*"
       ],
-      "@/style/*": [
-        "./style/*"
-      ],
-      "@/constants/*": [
-        "./constants/*"
-      ],
-      "@/hooks/*": [
-        "./hooks/*"
-      ],
-      "@/models/*": [
-        "models/*"
+      "@/api/*": [
+        "./api-client/*"
       ],
     }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "pages/posts/_document.js"
   ],
   "exclude": [
     "node_modules"

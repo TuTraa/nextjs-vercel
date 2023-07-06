@@ -1,12 +1,11 @@
 import * as React from 'react';
 // import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
-import Header from '@/component/common/header';
 import { useRouter } from 'next/router';
-import MainLayout from '@/component/layout/main';
-import AdminLayout from '@/component/layout/main';
-import EmptyLayout from '@/component/layout/empty';
-// import MainLayout from '@/component/layout/main';
+import AdminLayout from '@/component/layout/admin';
+import { Box } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import { Header } from '@/component/common';
 export interface IAboutPageProps {
 }
 
@@ -41,18 +40,21 @@ export default function AboutPage(props: IAboutPageProps) {
     }
 
     return (
-        <div>
-            about page
+        <Box>
+            <h3 style={{ color: 'secondary.main' }}  >about page</h3>
+            <Typography component='h1' variant="h3" color='primary.main' >
+                about page
+            </Typography>
             <Header />
             <ul className='post-list'>
                 {postList.map((post: any) => <li key={post.id}>{post.title}</li>)}
             </ul>
             <button onClick={() => handleClick()} >Next page</button>
-        </div>
+        </Box>
     );
 }
 
-AboutPage.Layout = MainLayout
+AboutPage.Layout = AdminLayout
 
 export async function getStaticProps() {
     console.log("get static props")
