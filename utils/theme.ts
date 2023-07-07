@@ -40,6 +40,7 @@ export let theme = createTheme({
             variants: []
         },
         MuiLink: {
+
             defaultProps: {
                 underline: 'none',
             },
@@ -61,6 +62,25 @@ export let theme = createTheme({
                     }
                 }
 
+            ]
+        },
+        MuiChip: {
+            styleOverrides: {
+                root: {
+                    paddingInline: 4,
+                    paddingTop: 8,
+                    paddingBottom: 8,
+                }
+            },
+            variants: [
+                {
+                    props: { color: 'secondary' },
+                    style: {
+                        fontWeight: 'bold',
+                        color: 'white',
+                        backgroundColor: '#142850'
+                    }
+                }
             ]
         }
 
