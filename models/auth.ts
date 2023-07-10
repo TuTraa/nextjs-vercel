@@ -1,4 +1,4 @@
-export interface loginPayLoad {
+export interface LoginPayLoad {
     username: string,
     password: string,
 }

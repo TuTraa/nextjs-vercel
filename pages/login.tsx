@@ -2,6 +2,8 @@ import * as React from 'react';
 // import { authApi } from '@/api';
 import { UseAuth } from '@/hooks';
 import { useRouter } from 'next/router';
+import { LoginForm } from '@/component/auth';
+import { LoginPayLoad } from '@/models';
 
 
 export default function LoginPgae() {
@@ -14,7 +16,10 @@ export default function LoginPgae() {
 
     async function handleLoginClick() {
         try {
-            await login();
+            await login({
+                username: 'test',
+                password: '123'
+            });
             router.push('./about')
         } catch (error) {
             console.log('failse to login', error)
@@ -32,7 +37,16 @@ export default function LoginPgae() {
             await logout();
             console.log('redireact to login page');
         } catch (error) {
-            console.log('failse to get logout  ', error)
+            console.log('failse to get logout', error)
+        }
+    }
+    async function handleLoginSubmit(payload: LoginPayLoad) {
+        try {
+            await login(payload);
+
+        }
+        catch (error) {
+            console.log('login err:', error)
         }
     }
 
@@ -45,6 +59,7 @@ export default function LoginPgae() {
             <button onClick={handleLoginClick}>Login</button>
             {/* <button onClick={handleGetProfileClick}>Get profile</button> */}
             <button onClick={handleLogoutClick}>Logout</button>
+            <LoginForm onSubmit={handleLoginSubmit} />
         </div>
     );
 }
