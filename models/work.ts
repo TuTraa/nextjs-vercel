@@ -1,8 +1,8 @@
 export interface Work {
     id: string,
     title: string,
-    taglist: string[],
-    shotDescription: string,
+    tagList: string[],
+    shortDescription: string,
     fullDescription: string,
     updateAt: string,
     createdAt: string,

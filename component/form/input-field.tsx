@@ -14,6 +14,7 @@ export function InputField({ name, label, control, onChange: externalOnchange, o
         field: { onChange, onBlur, value, ref },
         fieldState: { error }
     } = useController({
+
         name, control
     })
     return (
@@ -26,6 +27,8 @@ export function InputField({ name, label, control, onChange: externalOnchange, o
             fullWidth
             size="small"
             margin="normal"
+            error={!!error}
+            helperText={error?.message}
             {...rest}
         />
     )

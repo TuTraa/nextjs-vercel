@@ -8,11 +8,15 @@ export interface WorkListProps {
 }
 
 export default function WorkList({ workList }: WorkListProps) {
-  if (workList.length === 0) return null
+  if (workList.length === 0) return (
+    <Box>
+      NO DATA
+    </Box>
+  )
   return (
     <Box>
       {
-        workList.map((work) => (
+        workList && workList.length && workList.map((work) => (
           <Fragment key={work.id}>
             <WorkCard work={work} />
             <Divider sx={{ my: 3 }} />

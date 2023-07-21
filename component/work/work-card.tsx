@@ -20,9 +20,9 @@ export default function WorkCard({ work }: WorkCardProps) {
                 <Typography variant='h4' fontWeight="bold">{work.title}</Typography>
                 <Stack direction='row' spacing={2} my={2}>
                     <Chip color='secondary' label={new Date(Number.parseInt(work.createdAt)).getFullYear()} size='small' />
-                    <Typography color={'GrayText'}>{work.taglist.join(', ')}</Typography>
+                    <Typography color={'GrayText'}>{work && work?.tagList.join(', ')}</Typography>
                 </Stack>
-                <Typography>{work.shotDescription}</Typography>
+                <Typography>{work.shortDescription}</Typography>
             </Box>
 
         </Stack>

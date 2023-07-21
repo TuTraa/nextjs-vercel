@@ -10,7 +10,7 @@ export default function LoginPgae() {
     const router = useRouter();
 
 
-    const { profile, login, logout, } = UseAuth({
+    const { aaa, login, logout, } = UseAuth({
         revalidateOnMount: false,
     });
 
@@ -43,7 +43,7 @@ export default function LoginPgae() {
     async function handleLoginSubmit(payload: LoginPayLoad) {
         try {
             await login(payload);
-
+            router.push('/')
         }
         catch (error) {
             console.log('login err:', error)
@@ -55,7 +55,7 @@ export default function LoginPgae() {
         <div>
             <h1>Login page</h1>
 
-            <p>profile :{JSON.stringify(profile || {}, null, 404)}</p>
+            <p>profile :{JSON.stringify(aaa || {}, null, 404)}</p>
             <button onClick={handleLoginClick}>Login</button>
             {/* <button onClick={handleGetProfileClick}>Get profile</button> */}
             <button onClick={handleLogoutClick}>Logout</button>

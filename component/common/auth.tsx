@@ -8,15 +8,15 @@ export interface AuthProps {
 
 export default function AuthComponent({ children }: { children: any }) {
     const router = useRouter();
-    const { profile, firstLoading } = UseAuth();
+    const { aaa, firstLoading } = UseAuth();
 
     useEffect(() => {
-        if (!firstLoading && !profile?.username) {
+        if (!firstLoading && !aaa?.username) {
             router.push('/login')
         }
-    }, [router, profile, firstLoading])
+    }, [router, aaa, firstLoading])
 
-    if (!profile?.username) return <p>loading...</p>
+    if (!aaa?.username) return <p>loading...</p>
     return (
         <div>
             <h1>{children}</h1>

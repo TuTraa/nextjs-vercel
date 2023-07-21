@@ -6,23 +6,32 @@ import { Button, InputAdornment, IconButton } from "@mui/material"
 import { Visibility, VisibilityOff } from "@mui/icons-material"
 // import InputAdornment from "@mui/material/InputAdornment/InputAdornment"
 // import IconButton from "@mui/material/IconButton/IconButton"
-import { LoginPayLoad } from "@/models"
+import { LoginPayLoad } from "@/models";
+import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 export interface LoginFormProps {
     onSubmit?: (payload: LoginPayLoad) => void
 }
 
 export function LoginForm({ onSubmit }: LoginFormProps) {
+    const schema = yup.object().shape({
+        username: yup.string().required('please enter username').min(4, 'username must be more than 6 characters '),
+
+        password: yup
+            .string()
+            .required('please enter username')
+            .min(4, 'password must be more than 6 characters')
+    })
+
     const [showPassword, setShowPassword] = useState(false)
-    const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault();
-    };
     const { control, handleSubmit } = useForm<LoginPayLoad>({
         defaultValues: {
             username: '',
             password: '',
+        },
+        resolver: yupResolver(schema),
 
-        }
     })
 
     function handleLoginSubmit(payload: LoginPayLoad) {

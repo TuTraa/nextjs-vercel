@@ -20,7 +20,7 @@ export default function PostCard({ post }: PostCardProps) {
                         {format(Number(post.publishedDate), 'dd MM yyyy')}
                     </Typography>
                     <Divider orientation='vertical' sx={{ mx: 2 }} flexItem />
-                    <Typography>{post.taglist.join(',')}</Typography>
+                    <Typography>{post.tagList.join(',')}</Typography>
 
                 </Stack>
 
