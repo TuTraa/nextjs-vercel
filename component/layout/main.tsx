@@ -8,8 +8,8 @@ import { Box } from '@mui/system'
 
 export default function MainLayout({ children }: LayoutProps) {
     useEffect(() => {
-        console.log("mouting")
-        return () => { console.log('unMounting'); }
+        // console.log("mouting")
+        // return () => { console.log('unMounting'); }
     }, [])
     return (
         <Stack minHeight='100vh '>

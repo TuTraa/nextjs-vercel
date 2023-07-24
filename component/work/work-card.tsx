@@ -22,7 +22,7 @@ export default function WorkCard({ work }: WorkCardProps) {
                     <Chip color='secondary' label={new Date(Number.parseInt(work.createdAt)).getFullYear()} size='small' />
                     <Typography color={'GrayText'}>{work && work?.tagList.join(', ')}</Typography>
                 </Stack>
-                <Typography>{work.shortDescription}</Typography>
+                <Typography>{work?.shortDescription}</Typography>
             </Box>
 
         </Stack>
